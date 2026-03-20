@@ -3,119 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projetos Mecânicos 3D Hub - Engenharia e Laudos</title>
+    <title>Projetos Mecânicos 3D Hub - Engenharia e Consultoria</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
-        :root { --laranja: #ff6600; --dark-bg: #121212; --card-bg: #1e1e1e; }
-        body { background-color: var(--dark-bg); color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .navbar { background-color: #000; border-bottom: 2px solid var(--laranja); }
+        :root { --laranja: #ff6600; --dark-bg: #0b0b0b; --card-bg: #161616; --cinza-claro: #f4f4f4; }
+        body { background-color: var(--dark-bg); color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
+        
+        /* Navbar */
+        .navbar { background-color: rgba(0,0,0,0.95); border-bottom: 2px solid var(--laranja); padding: 18px 0; }
+        .navbar-brand { letter-spacing: 1.5px; font-size: 1.4rem; }
+
+        /* Hero */
         .hero { 
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80');
-            background-size: cover; padding: 120px 0; border-bottom: 5px solid var(--laranja);
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80');
+            background-size: cover; background-position: center; padding: 130px 0; border-bottom: 6px solid var(--laranja);
         }
+
+        /* Faixa de Normas */
+        .faixa-normas { background-color: #1a1a1a; padding: 25px 0; border-bottom: 1px solid #333; }
+        .norma-item { font-weight: bold; color: var(--laranja); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Seção Autoridade */
+        .secao-autoridade { padding: 90px 0; background-color: #111; }
+        .badge-exp { background: var(--laranja); color: #000; font-weight: 800; padding: 6px 14px; border-radius: 4px; font-size: 0.75rem; margin-bottom: 20px; display: inline-block; }
+
+        /* Cards de Serviço */
         .card-servico { 
-            background-color: var(--card-bg); border: none; color: white; transition: 0.3s;
-            border-top: 3px solid var(--laranja);
+            background-color: var(--card-bg); border: 1px solid #222; transition: 0.4s; height: 100%; border-radius: 4px;
         }
-        .card-servico:hover { transform: translateY(-10px); background-color: #252525; }
-        .text-orange { color: var(--laranja); }
-        .btn-orange { background-color: var(--laranja); color: white; font-weight: bold; border-radius: 0; }
+        .card-servico:hover { border-color: var(--laranja); transform: translateY(-8px); background-color: #1d1d1d; }
+        
+        /* ESTRUTURA DE PORTFÓLIO */
+        .portfolio-card { 
+            background: #1a1a1a; border: 1px solid #333; border-radius: 8px; transition: 0.4s ease; overflow: hidden; height: 100%;
+        }
+        .portfolio-card:hover { 
+            border-color: var(--laranja); transform: scale(1.02); box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
+        }
+        .portfolio-img-wrapper { height: 220px; overflow: hidden; border-bottom: 3px solid var(--laranja); }
+        .portfolio-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .portfolio-card:hover .portfolio-img { transform: scale(1.1); }
+
+        /* Estudo de Caso de Destaque */
+        .img-preview-container { position: relative; cursor: pointer; border: 2px solid #333; border-radius: 8px; transition: 0.4s; overflow: hidden; }
+        .img-preview-container:hover { border-color: var(--laranja); }
+        .img-preview-container img { opacity: 0.8; transition: 0.4s; }
+        .img-preview-container:hover img { opacity: 1; }
+
+        /* Footer */
+        footer { background-color: #000; padding: 60px 0 20px; border-top: 1px solid #222; }
+        .footer-link { color: #888; text-decoration: none; transition: 0.3s; }
+        .footer-link:hover { color: var(--laranja); }
+        
+        .btn-orange { background-color: var(--laranja); color: white; font-weight: bold; border-radius: 0; padding: 12px 30px; border: none; }
         .btn-orange:hover { background-color: #cc5500; color: white; }
-        input, textarea { background-color: #252525 !important; border: 1px solid #444 !important; color: white !important; }
+        .text-orange { color: var(--laranja) !important; }
     </style>
-</head><a href="https://wa.me/5521979932621?text=Olá! Gostaria de um orçamento para um projeto mecânico." 
-   style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;z-index:1000;" 
+</head>
+
+<a href="https://wa.me/5521979932621?text=Olá Wagner! Vi seu site e gostaria de solicitar uma consultoria técnica." 
+   style="position:fixed;width:60px;height:60px;bottom:30px;right:30px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 2px 2px 10px rgba(0,0,0,0.5);z-index:1000;" 
    target="_blank">
-    <i class="bi bi-whatsapp" style="margin-top:16px; display:inline-block;"></i>
+    <i class="bi bi-whatsapp" style="line-height:60px;"></i>
 </a>
+
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#">PROJETOS<span class="text-orange">MECANICOS</span>3DHUB</a>
-        <span class="navbar-text d-none d-sm-block">3D, FEA & Laudos</span>
+        <a class="navbar-brand fw-bold" href="#">PROJETOS<span class="text-orange">MECÂNICOS</span>3DHUB</a>
+        <div class="d-none d-md-block small fw-bold opacity-75">ENGENHARIA & SOFTWARE</div>
     </div>
 </nav>
 
 <header class="hero text-center">
     <div class="container">
-        <h1 class="display-4 fw-bold">Inovação em Projetos, <span class="text-orange">Confiança em Resultados</span></h1>
-        <p class="lead mt-3">Soluções Especializadas em NR-12, NR-13 e Engenharia Mecânica de Alta Precisão.</p>
+        <h1 class="display-3 fw-bold">Engenharia de <span class="text-orange">Confiança</span></h1>
+        <p class="lead mt-3 mx-auto" style="max-width: 800px;">Consultoria em Projetos 3D, NR-12, NR-13 e Simulação Estrutural (FEA) com o rigor de quem entende o chão de fábrica.</p>
         <div class="mt-4">
-            <a href="#contato" class="btn btn-orange btn-lg px-5">SOLICITAR ORÇAMENTO</a>
+            <a href="#contato" class="btn btn-orange">SOLICITAR CONSULTORIA TÉCNICA</a>
         </div>
     </div>
 </header>
 
-<main class="container my-5">
-    <div class="row text-center mb-5">
-        <div class="col">
-            <h2 class="fw-bold">Nossas Especialidades</h2>
-            <div style="width: 80px; height: 4px; background: var(--laranja); margin: 10px auto;"></div>
+<section class="faixa-normas text-center">
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+            <div class="col-6 col-md-2 norma-item"><i class="bi bi-shield-check me-2"></i>NR-12 / NR-13 / NR-35</div>
+            <div class="col-6 col-md-2 norma-item"><i class="bi bi-cpu me-2"></i>SIMULAÇÃO FEA</div>
+            <div class="col-6 col-md-2 norma-item"><i class="bi bi-box me-2"></i>AUTODESK INVENTOR</div>
+            <div class="col-6 col-md-2 norma-item"><i class="bi bi-file-earmark-code me-2"></i>Treinamentos</div>
         </div>
     </div>
+</section>
 
-    <div class="row">
+<section class="secao-autoridade">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="badge-exp">CONHECIMENTO PRÁTICO & TEÓRICO</div>
+                <h2 class="fw-bold mb-4">A Experiência que <span class="text-orange">Viabiliza a Fabricação</span></h2>
+                <p class="text-secondary" style="font-size: 1.1rem; line-height: 1.8;">
+                    Com mais de <strong>15 anos de atuação</strong> em manutenção e caldeiraria industrial, trago uma visão diferenciada: meus projetos não apenas funcionam na tela, mas são otimizados para a vida real.
+                </p>
+                <p class="text-secondary" style="font-size: 1.1rem; line-height: 1.8;">
+                    Unindo a Engenharia Mecânica ao Desenvolvimento de Software, entrego laudos precisos e simulações que garantem a segurança operacional e a redução de custos.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="{{ url_for('static', filename='foto2.jpg') }}" alt="Engenharia Wagner" class="img-fluid rounded shadow-lg border-bottom border-warning" style="border-width: 5px !important; max-height: 450px;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="container my-5 pt-5">
+    
+    <div class="row text-center mb-5">
+        <div class="col">
+            <h2 class="fw-bold">ESPECIALIDADES</h2>
+            <div style="width: 60px; height: 4px; background: var(--laranja); margin: 15px auto;"></div>
+        </div>
+    </div>
+    <div class="row g-4 mb-5 pb-5">
         {% for s in servicos %}
-        <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card h-100 card-servico p-3 text-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card card-servico p-4 text-center">
                 <div class="card-body">
-                    <h5 class="card-title fw-bold text-orange mb-3">{{ s.titulo }}</h5>
-                    <p class="card-text small">{{ s.desc }}</p>
+                    <i class="bi bi-gear-fill text-orange display-6 mb-3"></i>
+                    <h5 class="card-title fw-bold mb-3" style="color:var(--laranja)">{{ s.titulo }}</h5>
+                    <p class="card-text text-secondary small">{{ s.desc }}</p>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 
-    <section id="contato" class="my-5 p-5 rounded shadow-lg" style="background-color: #1a1a1a;">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h3 class="fw-bold text-orange">Vamos iniciar seu projeto?</h3>
-                <p>Atendimento técnico para indústrias e empresas que buscam conformidade e eficiência.</p>
-                <p><i class="bi bi-whatsapp text-orange"></i> (21) 97993-2621</p>
+    <div class="row text-center mb-5 mt-5">
+        <div class="col">
+            <h2 class="fw-bold">ESTUDO DE CASO EM DESTAQUE</h2>
+            <p class="text-secondary">Validação Técnica de Viga Birrail de 20 metros</p>
+            <div style="width: 60px; height: 4px; background: var(--laranja); margin: 15px auto;"></div>
+        </div>
+    </div>
+
+    <section class="py-5 mb-5" style="background: #111; border: 1px solid #222; border-radius: 8px;">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6">
+                    <div class="img-preview-container">
+                        <a href="{{ url_for('static', filename='BANNER.png') }}" target="_blank">
+                            <img src="{{ url_for('static', filename='BANNER.png') }}" class="img-fluid" alt="Laudo Técnico">
+                            <div style="position: absolute; bottom: 0; background: rgba(255,102,0,0.9); width: 100%; color: #000; padding: 10px; text-align: center; font-weight: bold;">
+                                <i class="bi bi-zoom-in"></i> CLIQUE PARA ABRIR O LAUDO COMPLETO
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <div class="badge-exp">ENGENHARIA APLICADA</div>
+                    <h3 class="fw-bold text-white mb-3">Validação Analítica vs FEA</h3>
+                    <p class="text-secondary mb-4">
+                        Este estudo demonstra a convergência entre o cálculo manual e a simulação por elementos finitos, seguindo as normas <strong>NBR 8400</strong> e <strong>NBR 8800</strong>.
+                    </p>
+                    <ul class="list-unstyled text-secondary small mb-4">
+                        <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Verificação de Flecha Máxima Admissível</li>
+                        <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Tensões de Von Mises sob Carga Nominal</li>
+                        <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Análise de Estabilidade de Flambagem</li>
+                    </ul>
+                    <a href="{{ url_for('static', filename='BANNER.png') }}" target="_blank" class="btn btn-orange">ABRIR ESTUDO TÉCNICO</a>
+                </div>
             </div>
-            <div class="col-lg-6">
-                <form action="/contato" method="post" class="row g-3">
-                    <div class="col-md-6"><input type="text" name="nome" class="form-control" placeholder="Seu Nome" required></div>
-                    <div class="col-md-6"><input type="email" class="form-control" placeholder="E-mail" required></div>
-                    <div class="col-12"><textarea class="form-control" rows="3" placeholder="Qual sua necessidade técnica?"></textarea></div>
-                    <div class="col-12"><button type="submit" class="btn btn-orange w-100">ENVIAR AGORA</button></div>
+        </div>
+    </section>
+
+    <div class="row text-center mb-5 mt-5 pt-5">
+        <div class="col">
+            <h2 class="fw-bold">PORTFÓLIO TÉCNICO</h2>
+            <p class="text-secondary">Engenharia Assistida por Computador (CAE)</p>
+            <div style="width: 60px; height: 4px; background: var(--laranja); margin: 15px auto;"></div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-4">
+            <div class="portfolio-card">
+                <div class="portfolio-img-wrapper">
+                    <img src="{{ url_for('static', filename='PONTE COMLETA EM 3D.png') }}" class="portfolio-img">
+                </div>
+                <div class="p-4">
+                    <h6 class="fw-bold text-orange text-uppercase">Modelagem 3D Avançada</h6>
+                    <p class="small text-secondary mb-0">Montagem completa de ponte rolante no Autodesk Inventor com foco em fabricação.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="portfolio-card">
+                <div class="portfolio-img-wrapper">
+                    <img src="{{ url_for('static', filename='MAPA DE CALOR ANALISE ESTATICA.png') }}" class="portfolio-img">
+                </div>
+                <div class="p-4">
+                    <h6 class="fw-bold text-orange text-uppercase">Análise de Tensões (FEA)</h6>
+                    <p class="small text-secondary mb-0">Mapa de calor indicando regiões críticas e garantindo o fator de segurança.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="portfolio-card">
+                <div class="portfolio-img-wrapper">
+                    <img src="{{ url_for('static', filename='DESENTEC DA VIGA.png') }}" class="portfolio-img">
+                </div>
+                <div class="p-4">
+                    <h6 class="fw-bold text-orange text-uppercase">Detalhamento Executivo</h6>
+                    <p class="small text-secondary mb-0">Desenhos de fabricação com tolerâncias e especificações técnicas de soldagem.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="portfolio-card">
+                <div class="portfolio-img-wrapper">
+                    <img src="{{ url_for('static', filename='DCL.png') }}" class="portfolio-img">
+                </div>
+                <div class="p-4">
+                    <h6 class="fw-bold text-orange text-uppercase">Fundamentação Analítica</h6>
+                    <p class="small text-secondary mb-0">Diagramas de corpo livre e reações de apoio fundamentando a simulação.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="portfolio-card">
+                <div class="portfolio-img-wrapper">
+                    <img src="{{ url_for('static', filename='MALHA APLICADA NO FEA.png') }}" class="portfolio-img">
+                </div>
+                <div class="p-4">
+                    <h6 class="fw-bold text-orange text-uppercase">Discretização de Malha</h6>
+                    <p class="small text-secondary mb-0">Refinamento de elementos finitos em regiões de furos e concentradores de tensão.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="portfolio-card">
+                <div class="portfolio-img-wrapper">
+                    <img src="{{ url_for('static', filename='ANALISE MODAL.png') }}" class="portfolio-img">
+                </div>
+                <div class="p-4">
+                    <h6 class="fw-bold text-orange text-uppercase">Análise Dinâmica / Modal</h6>
+                    <p class="small text-secondary mb-0">Verificação de frequências naturais para evitar ressonância estrutural.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="contato" class="my-5 py-5">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <h3 class="fw-bold text-orange">Atendimento Técnico</h3>
+                <p class="text-secondary">Engenharia de precisão para sua indústria.</p>
+                <div class="mt-4">
+                    <p class="mb-2"><i class="bi bi-geo-alt-fill text-orange me-3"></i> Barra Mansa, RJ - Sul Fluminense</p>
+                    <p class="mb-2"><i class="bi bi-envelope-fill text-orange me-3"></i> projetosmecanicosdhub@gmail.com</p>
+                    <p class="mb-2"><i class="bi bi-person-badge-fill text-orange me-3"></i> Eng. Wagner Fonseca (CREA ATIVO)</p>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <form action="/contato" method="post" style="background: #161616; padding: 40px; border-radius: 4px; border: 1px solid #222;">
+                    <div class="row g-3">
+                        <div class="col-md-6"><input type="text" name="nome" class="form-control bg-dark text-white border-secondary" placeholder="Seu Nome" required></div>
+                        <div class="col-md-6"><input type="email" name="email" class="form-control bg-dark text-white border-secondary" placeholder="Seu E-mail" required></div>
+                        <div class="col-12"><textarea name="mensagem" class="form-control bg-dark text-white border-secondary" rows="4" placeholder="Descreva sua necessidade técnica..."></textarea></div>
+                        <div class="col-12"><button type="submit" class="btn btn-orange w-100 py-3">SOLICITAR ORÇAMENTO</button></div>
+                    </div>
                 </form>
             </div>
         </div>
     </section>
 </main>
 
-<main class="container my-5">
-    <div class="row text-center mb-5 mt-5">
-        <div class="col">
-            <h2 class="fw-bold text-orange">Portfólio Técnico</h2>
-            <p class="text-muted">Engenharia de precisão aplicada em casos reais</p>
+<footer>
+    <div class="container text-center">
+        <div class="d-flex justify-content-center gap-4 mb-4">
+            <a href="https://www.instagram.com/projetosmecanicos3dhub/" target="_blank" class="footer-link fs-4"><i class="bi bi-instagram"></i></a>
+            <a href="https://wa.me/5521979932621" target="_blank" class="footer-link fs-4"><i class="bi bi-whatsapp"></i></a>
         </div>
+        <p class="small text-secondary mt-4 mb-0">© 2026 Projetos Mecânicos 3D Hub - Barra Mansa, RJ</p>
     </div>
+</footer>
 
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card bg-dark border-secondary h-100">
-               <img src="{{ url_for('static', filename='foto2.jpg') }}" class="card-img-top" alt="Meu Projeto">
-                <div class="card-body text-center"><p class="card-text small">Simulação de Esforços (FEA)</p></div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-dark border-secondary h-100">
-                <img src="{{ url_for('static', filename='foto1.jpg') }}" class="card-img-top" alt="Meu Projeto">
-                <div class="card-body text-center"><p class="card-text small">Modelagem de Componentes</p></div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-dark border-secondary h-100">
-                <img src="{{ url_for('static', filename='foto3.jpg') }}" class="card-img-top" alt="Meu Projeto">
-                <div class="card-body text-center"><p class="card-text small">Adequação de Máquinas (NR-12)</p></div>
-            </div>
-        </div>
-    </div>
-</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
