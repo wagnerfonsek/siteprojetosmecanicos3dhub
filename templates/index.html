@@ -59,6 +59,14 @@
         .btn-orange { background-color: var(--laranja); color: white; font-weight: bold; border-radius: 0; padding: 12px 30px; border: none; }
         .btn-orange:hover { background-color: #cc5500; color: white; }
         .text-orange { color: var(--laranja) !important; }
+
+        /* Estilo Adicional para os Modais */
+        .modal-content { background-color: #161616 !important; border: 2px solid var(--laranja) !important; color: #fff; border-radius: 8px; }
+        .modal-header { border-bottom: 1px solid #333; }
+        .modal-footer { border-top: 1px solid #333; }
+        .list-modal li { margin-bottom: 12px; font-size: 0.95rem; color: #ccc; border-left: 3px solid var(--laranja); padding-left: 15px; list-style: none; }
+        .list-modal strong { color: var(--laranja); }
+        .btn-close-white { filter: invert(1) grayscale(100%) brightness(200%); }
     </style>
 </head>
 
@@ -128,12 +136,13 @@
     </div>
     <div class="row g-4 mb-5 pb-5">
         {% for s in servicos %}
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4" data-bs-toggle="modal" data-bs-target="#modalServico{{ loop.index }}" style="cursor: pointer;">
             <div class="card card-servico p-4 text-center">
                 <div class="card-body">
                     <i class="bi bi-gear-fill text-orange display-6 mb-3"></i>
                     <h5 class="card-title fw-bold mb-3" style="color:var(--laranja)">{{ s.titulo }}</h5>
                     <p class="card-text text-secondary small">{{ s.desc }}</p>
+                    <div class="text-orange mt-2 small fw-bold">SAIBA MAIS <i class="bi bi-plus-lg"></i></div>
                 </div>
             </div>
         </div>
@@ -291,5 +300,111 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="modal fade" id="modalServico1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold text-orange">Engenharia de Precisão: Análise FEA</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary">A utilização do Método de Elementos Finitos (FEA) via Autodesk Inventor garante integridade técnica e economia de material.</p>
+                <ul class="list-modal p-0">
+                    <li><strong>Segurança Estrutural:</strong> Verificação de tensões de Von Mises conforme NBR 8400.</li>
+                    <li><strong>Otimização:</strong> Redução de peso mantendo o fator de segurança rigoroso.</li>
+                </ul>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="https://wa.me/5521979932621" class="btn btn-orange w-100">SOLICITAR ANÁLISE TÉCNICA</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalServico2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold text-orange">Adequação NR-12: Segurança de Máquinas</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary">Evite interdições e garanta a proteção jurídica da sua empresa com laudos técnicos precisos.</p>
+                <ul class="list-modal p-0">
+                    <li><strong>Apreciação de Riscos:</strong> Identificação de perigos conforme a NBR ISO 12100.</li>
+                    <li><strong>Conformidade Legal:</strong> Emissão de documentação e ART para fiscalização.</li>
+                </ul>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="https://wa.me/5521979932621" class="btn btn-orange w-100">SOLICITAR CONSULTORIA NR-12</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalServico3" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold text-orange">Inspeção NR-13 & Projetos NR-35</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary">Trabalhamos na preservação do patrimônio e da vida em ambientes críticos e altura.</p>
+                <ul class="list-modal p-0">
+                    <li><strong>Integridade:</strong> Inspeção em vasos de pressão seguindo o código ASME VIII.</li>
+                    <li><strong>Linha de Vida:</strong> Projetos calculados para suportar esforços dinâmicos de queda.</li>
+                </ul>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="https://wa.me/5521979932621" class="btn btn-orange w-100">SOLICITAR INSPEÇÃO</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalServico4" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold text-orange">Treinamento em Soldagem Industrial</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary">Capacitação técnica baseada em 15 anos de vivência real em caldeiraria e manutenção industrial.</p>
+                <ul class="list-modal p-0">
+                    <li><strong>Prática & Teoria:</strong> Processos MIG/MAG, TIG e Eletrodo Revestido.</li>
+                    <li><strong>Qualidade:</strong> Foco em redução de retrabalho e inspeção visual de soldagem.</li>
+                </ul>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="https://wa.me/5521979932621" class="btn btn-orange w-100">CAPACITAR MINHA EQUIPE</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalServico5" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold text-orange">Responsabilidade Técnica e ART</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary">Garantia jurídica e técnica para fabricação e reformas de equipamentos industriais.</p>
+                <ul class="list-modal p-0">
+                    <li><strong>CREA-RJ:</strong> Emissão de Anotação de Responsabilidade Técnica (ART).</li>
+                    <li><strong>Chão de Fábrica:</strong> Detalhamento executivo pronto para a produção.</li>
+                </ul>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="https://wa.me/5521979932621" class="btn btn-orange w-100">FALAR COM O ENGENHEIRO</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
