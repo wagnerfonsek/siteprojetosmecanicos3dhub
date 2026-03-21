@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub - Memorial de Cálculo NR-35</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root { --laranja: #ff6600; --dark-bg: #0b0b0b; --card-bg: #161616; --input-bg: #1d1d1d; }
+        body { background-color: var(--dark-bg); color: #e0e0e0; font-family: 'Segoe UI', sans-serif; }
+        
+        .excel-container { 
+            max-width: 1000px; margin: 30px auto; 
+            background: var(--card-bg); border: 1px solid #333; border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+        }
+
+        /* Cabeçalho igual ao Print */
+        .excel-header { 
+            background: linear-gradient(90deg, #1a1a1a, #252525);
+            padding: 15px 25px; border-bottom: 2px solid var(--laranja);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .section-title { 
+            background: #222; color: var(--laranja); 
+            padding: 8px 15px; font-weight: bold; font-size: 0.85rem;
+            text-transform: uppercase; border-left: 4px solid var(--laranja);
+            margin: 20px 0 10px 0;
+        }
+
+        .grid-row { display: flex; border-bottom: 1px solid #222; padding: 10px 20px; align-items: center; }
+        .grid-label { flex: 2; font-size: 0.9rem; color: #aaa; }
+        .grid-input { flex: 1; }
+        
+        .form-control-excel { 
+            background: var(--input-bg); border: 1px solid #444; color: #fff;
+            text-align: right; padding: 5px 10px; font-weight: bold; width: 100%;
+        }
+        .form-control-excel:focus { border-color: var(--laranja); outline: none; background: #000; }
+
+        /* Estilo para as Células de Saída (Igual ao Print) */
+        .cell-output { 
+            background: #282828; color: var(--laranja); 
+            padding: 5px 10px; border: 1px solid #444; 
+            text-align: right; font-weight: bold; display: block;
+        }
+
+        .status-box {
+            padding: 20px; text-align: center; font-size: 1.5rem; font-weight: bold;
+            margin: 20px; border-radius: 4px;
+        }
+        .status-ok { background: rgba(0, 255, 0, 0.1); color: #00ff00; border: 1px solid #00ff00; }
+        .status-fail { background: rgba(255, 0, 0, 0.1); color: #ff4444; border: 1px solid #ff4444; }
+
+        .btn-calculate {
+            background: var(--laranja); color: #fff; border: none; width: 100%;
+            padding: 15px; font-weight: bold; text-transform: uppercase; cursor: pointer;
+        }
+        .btn-calculate:hover { background: #e65c00; }
+    </style>
+</head>
+<body>
+
+<div class="excel-container">
+    <div class="excel-header">
+        <div>
+            <h4 class="mb-0 fw-bold">PROJETOS MECÂNICOS <span class="text-orange" style="color:var(--laranja)">3D HUB</span></h4>
+            <small class="text-secondary">CÁLCULO DE LINHA DE VIDA - NR-35 / NBR 16325</small>
+        </div>
+        <i class="bi bi-shield-check fs-1 text-orange" style="color:var(--laranja)"></i>
+    </div>
+
+    <form method="POST">
+        <div class="section-title">Dados de Entrada (Inputs)</div>
+        
+        <div class="grid-row">
+            <div class="grid-label">Vão entre Ancoragens (L)</div>
+            <div class="grid-input">
+                <div class="input-group">
+                    <input type="number" step="0.1" name="vao" class="form-control-excel" value="20" required>
+                    <span class="input-group-text bg-dark border-secondary text-secondary">m</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <div class="grid-label">Número de Pessoas na Linha</div>
+            <div class="grid-input">
+                <input type="number" name="pessoas" class="form-control-excel" value="2" required>
+            </div>
+        </div>
+
+        <div class="grid-row">
+            <div class="grid-label">Carga de Ruptura do Cabo (Mínima)</div>
+            <div class="grid-input">
+                <div class="input-group">
+                    <input type="number" name="ruptura" class="form-control-excel" value="6160" required>
+                    <span class="input-group-text bg-dark border-secondary text-secondary">kgf</span>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-calculate">Processar Simulação de Queda</button>
+
+        {% if resultado %}
+        <div class="section-title">Resultados do Memorial (Outputs)</div>
+
+        <div class="grid-row">
+            <div class="grid-label">Flecha Dinâmica Estimada (f3)</div>
+            <div class="grid-input"><span class="cell-output">{{ resultado.f3_dinamica }} mm</span></div>
+        </div>
+
+        <div class="grid-row">
+            <div class="grid-label">Força Resultante no Apoio (T1)</div>
+            <div class="grid-input"><span class="cell-output">{{ resultado.t1_kgf }} kgf</span></div>
+        </div>
+
+        <div class="grid-row">
+            <div class="grid-label">Fator de Segurança Encontrado (FS)</div>
+            <div class="grid-input"><span class="cell-output">{{ resultado.fator_servico }}</span></div>
+        </div>
+
+        <div class="grid-row">
+            <div class="grid-label">Zona de Livre Queda Mínima (ZLQ)</div>
+            <div class="grid-input"><span class="cell-output">{{ resultado.zlq_m }} m</span></div>
+        </div>
+
+        <div class="status-box {% if resultado.aprovado %}status-ok{% else %}status-fail{% endif %}">
+            {% if resultado.aprovado %}
+                <i class="bi bi-check-all"></i> MEMORIAL APROVADO
+            {% else %}
+                <i class="bi bi-exclamation-triangle"></i> MEMORIAL REPROVADO
+            {% endif %}
+        </div>
+        {% endif %}
+    </form>
+    
+    <div class="p-3 text-center border-top border-secondary">
+        <a href="/" class="text-secondary text-decoration-none small">Voltar ao Painel Administrativo</a>
+    </div>
+</div>
+
+</body>
+</html>
