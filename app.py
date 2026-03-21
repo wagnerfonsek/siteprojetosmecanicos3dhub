@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
+import math
+
 # Importando sua lógica da pasta calculo
 from calculo.funcoes import calcular_linha_vida
+from calculo.funcoes_nr13 import calcular_volume_cilindro, calcular_volume_tampo, calcular_pv_nr13
 
 app = Flask(__name__)
 
@@ -25,15 +28,39 @@ def ferramentas():
 def calculadora_nr35():
     resultado = None
     if request.method == 'POST':
-        # Pegando os dados do formulário
         vao = float(request.form.get('vao', 0))
         pessoas = int(request.form.get('pessoas', 0))
-        ruptura = float(request.form.get('ruptura', 0)) # Variável em português
-        
-        # CORREÇÃO AQUI: Mudamos 'rupture' para 'ruptura' para o Python não se perder
+        ruptura = float(request.form.get('ruptura', 0))
         resultado = calcular_linha_vida(vao, pessoas, ruptura)
-    
     return render_template('calculadora.html', resultado=resultado)
+
+@app.route('/calculadora_nr13', methods=['GET', 'POST'])
+def calculadora_nr13():
+    resultado = None
+    if request.method == 'POST':
+        try:
+            p = float(request.form.get('pressao', 0))
+            d = float(request.form.get('diametro', 0))
+            h = float(request.form.get('altura', 0))
+            tipo_tampo = request.form.get('tipo_tampo')
+            classe = request.form.get('classe_fluido')
+            
+            v_casco = calcular_volume_cilindro(d, h)
+            # Multiplicamos por 2 para considerar os dois tampos do vaso
+            v_tampo = calcular_volume_tampo(tipo_tampo, d) * 2 
+            v_total = v_casco + v_tampo
+            
+            pv, categoria = calcular_pv_nr13(p, v_total, classe)
+            
+            resultado = {
+                'volume': round(v_total, 3),
+                'pv': pv,
+                'categoria': categoria
+            }
+        except Exception as e:
+            print(f"Erro no cálculo: {e}")
+            
+    return render_template('calculadora_nr13.html', resultado=resultado)
 
 @app.route('/contato', methods=['POST'])
 def contato():

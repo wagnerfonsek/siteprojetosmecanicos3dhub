@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hub - Memorial de Cálculo NR-35</title>
+    <title>3D HUB - Memorial NR-35</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
@@ -11,52 +11,63 @@
         body { background-color: var(--dark-bg); color: #e0e0e0; font-family: 'Segoe UI', sans-serif; }
         
         .excel-container { 
-            max-width: 1000px; margin: 30px auto; 
-            background: var(--card-bg); border: 1px solid #333; border-radius: 4px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            max-width: 900px; margin: 30px auto; 
+            background: var(--card-bg); border: 1px solid #333; border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8); overflow: hidden;
         }
 
         .excel-header { 
             background: linear-gradient(90deg, #1a1a1a, #252525);
-            padding: 15px 25px; border-bottom: 2px solid var(--laranja);
+            padding: 20px 25px; border-bottom: 3px solid var(--laranja);
             display: flex; justify-content: space-between; align-items: center;
         }
 
         .section-title { 
             background: #222; color: var(--laranja); 
-            padding: 8px 15px; font-weight: bold; font-size: 0.85rem;
-            text-transform: uppercase; border-left: 4px solid var(--laranja);
-            margin: 20px 0 10px 0;
+            padding: 10px 20px; font-weight: bold; font-size: 0.9rem;
+            text-transform: uppercase; border-left: 5px solid var(--laranja);
+            margin: 25px 0 15px 0;
         }
 
-        .grid-row { display: flex; border-bottom: 1px solid #222; padding: 10px 20px; align-items: center; }
-        .grid-label { flex: 2; font-size: 0.9rem; color: #aaa; }
-        .grid-input { flex: 1; }
+        .grid-row { 
+            display: flex; border-bottom: 1px solid #222; padding: 12px 25px; 
+            align-items: center; transition: background 0.2s;
+        }
+        .grid-row:hover { background: #1a1a1a; }
+        .grid-label { flex: 2; font-size: 0.95rem; color: #ccc; }
+        .grid-input { flex: 1; min-width: 150px; }
         
         .form-control-excel { 
             background: var(--input-bg); border: 1px solid #444; color: #fff;
-            text-align: right; padding: 5px 10px; font-weight: bold; width: 100%;
+            text-align: right; padding: 6px 12px; font-weight: bold; width: 100%;
+            border-radius: 4px;
         }
-        .form-control-excel:focus { border-color: var(--laranja); outline: none; background: #000; }
+        .form-control-excel:focus { border-color: var(--laranja); outline: none; background: #000; box-shadow: 0 0 8px rgba(255,102,0,0.3); }
 
         .cell-output { 
-            background: #282828; color: var(--laranja); 
-            padding: 5px 10px; border: 1px solid #444; 
-            text-align: right; font-weight: bold; display: block;
+            background: rgba(255, 102, 0, 0.05); color: var(--laranja); 
+            padding: 6px 12px; border: 1px solid rgba(255,102,0,0.3); 
+            text-align: right; font-weight: bold; display: block; border-radius: 4px;
         }
 
         .status-box {
-            padding: 20px; text-align: center; font-size: 1.5rem; font-weight: bold;
-            margin: 20px; border-radius: 4px;
+            padding: 25px; text-align: center; font-size: 1.8rem; font-weight: 800;
+            margin: 25px; border-radius: 8px; letter-spacing: 2px;
         }
-        .status-ok { background: rgba(0, 255, 0, 0.1); color: #00ff00; border: 1px solid #00ff00; }
-        .status-fail { background: rgba(255, 0, 0, 0.1); color: #ff4444; border: 1px solid #ff4444; }
+        .status-ok { background: rgba(0, 255, 0, 0.1); color: #00ff00; border: 2px solid #00ff00; }
+        .status-fail { background: rgba(255, 0, 0, 0.1); color: #ff4444; border: 2px solid #ff4444; }
+
+        .manual-text { font-size: 0.85rem; color: #aaa; line-height: 1.6; }
+        .manual-text strong { color: #ddd; }
 
         .btn-calculate {
             background: var(--laranja); color: #fff; border: none; width: 100%;
-            padding: 15px; font-weight: bold; text-transform: uppercase; cursor: pointer;
+            padding: 18px; font-size: 1.1rem; font-weight: bold; text-transform: uppercase; 
+            cursor: pointer; transition: all 0.3s;
         }
-        .btn-calculate:hover { background: #e65c00; }
+        .btn-calculate:hover { background: #e65c00; transform: scale(1.01); }
+        
+        .input-group-text { background: #333; border-color: #444; color: #aaa; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -64,14 +75,16 @@
 <div class="excel-container">
     <div class="excel-header">
         <div>
-            <h4 class="mb-0 fw-bold">PROJETOS MECÂNICOS <span class="text-orange" style="color:var(--laranja)">3D HUB</span></h4>
-            <small class="text-secondary">CÁLCULO DE LINHA DE VIDA - NR-35 / NBR 16325</small>
+            <h4 class="mb-0 fw-bold">PROJETOS MECÂNICOS <span style="color:var(--laranja)">3D HUB</span></h4>
+            <small class="text-secondary">ENGENHARIA & SEGURANÇA DO TRABALHO</small>
         </div>
-        <i class="bi bi-shield-check fs-1 text-orange" style="color:var(--laranja)"></i>
+        <div class="text-end">
+            <i class="bi bi-shield-fill-check fs-1" style="color:var(--laranja)"></i>
+        </div>
     </div>
 
     <form method="POST">
-        <div class="section-title">Dados de Entrada (Inputs)</div>
+        <div class="section-title"><i class="bi bi-arrow-right-square-fill me-2"></i>Parâmetros da Linha de Vida (NR-35)</div>
         
         <div class="grid-row">
             <div class="grid-label">Vão entre Ancoragens (L)</div>
@@ -79,13 +92,13 @@
                 <div class="input-group">
                     <input type="number" step="0.1" name="vao" class="form-control-excel" 
                            value="{{ request.form.get('vao', '20') }}" required>
-                    <span class="input-group-text bg-dark border-secondary text-secondary">m</span>
+                    <span class="input-group-text">m</span>
                 </div>
             </div>
         </div>
 
         <div class="grid-row">
-            <div class="grid-label">Número de Pessoas na Linha</div>
+            <div class="grid-label">Número de Operadores Simultâneos</div>
             <div class="grid-input">
                 <input type="number" name="pessoas" class="form-control-excel" 
                        value="{{ request.form.get('pessoas', '2') }}" required>
@@ -93,55 +106,74 @@
         </div>
 
         <div class="grid-row">
-            <div class="grid-label">Carga de Ruptura do Cabo (Mínima)</div>
+            <div class="grid-label">Carga de Ruptura do Cabo (SBC)</div>
             <div class="grid-input">
                 <div class="input-group">
                     <input type="number" name="ruptura" class="form-control-excel" 
                            value="{{ request.form.get('ruptura', '6160') }}" required>
-                    <span class="input-group-text bg-dark border-secondary text-secondary">kgf</span>
+                    <span class="input-group-text">kgf</span>
                 </div>
             </div>
         </div>
 
-        <button type="submit" class="btn-calculate">Processar Simulação de Queda</button>
+        <button type="submit" class="btn-calculate">Gerar Memorial de Simulação</button>
 
         {% if resultado %}
-        <div class="section-title">Resultados do Memorial (Outputs)</div>
+        <div class="section-title"><i class="bi bi-calculator-fill me-2"></i>Resultados da Análise Estrutural</div>
 
         <div class="grid-row">
-            <div class="grid-label">Flecha Dinâmica Estimada (f3)</div>
+            <div class="grid-label">Flecha Dinâmica (f3)</div>
             <div class="grid-input">
                 <span class="cell-output">{{ resultado.f3_mm }} mm</span>
             </div>
         </div>
 
         <div class="grid-row">
-            <div class="grid-label">Força Resultante no Apoio (T1)</div>
+            <div class="grid-label">Esforço Resultante na Ancoragem (T1)</div>
             <div class="grid-input"><span class="cell-output">{{ resultado.t1_kgf }} kgf</span></div>
         </div>
 
         <div class="grid-row">
-            <div class="grid-label">Fator de Segurança Encontrado (FS)</div>
+            <div class="grid-label">Fator de Segurança (FS)</div>
             <div class="grid-input"><span class="cell-output">{{ resultado.fator_servico }}</span></div>
         </div>
 
         <div class="grid-row">
-            <div class="grid-label">Zona de Livre Queda Mínima (ZLQ)</div>
+            <div class="grid-label">Zona de Livre Queda Exigida (ZLQ)</div>
             <div class="grid-input"><span class="cell-output">{{ resultado.zlq_m }} m</span></div>
         </div>
 
         <div class="status-box {% if resultado.aprovado %}status-ok{% else %}status-fail{% endif %}">
             {% if resultado.aprovado %}
-                <i class="bi bi-check-all"></i> MEMORIAL APROVADO
+                <i class="bi bi-check-circle-fill"></i> MEMORIAL APROVADO
             {% else %}
-                <i class="bi bi-exclamation-triangle"></i> MEMORIAL REPROVADO
+                <i class="bi bi-exclamation-triangle-fill"></i> MEMORIAL REPROVADO
             {% endif %}
         </div>
         {% endif %}
     </form>
+
+    <div class="section-title"><i class="bi bi-info-circle-fill me-2"></i>Manual Técnico e Orientações</div>
+    <div class="p-4 manual-text">
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>1. Definição do Vão (L):</strong> Insira a distância entre os suportes de ancoragem. Para linhas flexíveis, vãos maiores aumentam a flecha e o esforço nos apoios.</p>
+                <p><strong>2. Operadores:</strong> Capacidade máxima de usuários conectados. O cálculo baseia-se na queda simultânea conforme NBR 16325.</p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>3. Carga de Ruptura:</strong> Valor nominal do cabo de aço. Ex: Cabo 3/8" (9.5mm) polido tem ruptura mínima de 6.160 kgf.</p>
+                <p><strong>4. Zona de Livre Queda (ZLQ):</strong> É a altura mínima necessária abaixo da linha para garantir que o trabalhador não colida com o solo ou obstáculos em caso de queda.</p>
+            </div>
+        </div>
+        <div class="alert alert-warning bg-dark border-warning text-warning mt-2 mb-0" style="font-size: 0.8rem;">
+            <i class="bi bi-exclamation-triangle-fill"></i> <strong>AVISO:</strong> Este memorial é uma simulação matemática. A instalação final deve ser validada por profissional habilitado com emissão de ART.
+        </div>
+    </div>
     
-    <div class="p-3 text-center border-top border-secondary">
-        <a href="/" class="text-secondary text-decoration-none small">Voltar ao Painel Administrativo</a>
+    <div class="p-4 text-center border-top border-secondary bg-dark">
+        <a href="/ferramentas" class="text-secondary text-decoration-none">
+            <i class="bi bi-grid-3x3-gap"></i> Voltar para Central de Ferramentas
+        </a>
     </div>
 </div>
 

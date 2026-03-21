@@ -21,7 +21,7 @@
             border-color: var(--laranja); transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
         }
-        .card-body { padding: 30px; }
+        .card-body { padding: 30px; display: flex; flex-direction: column; height: 100%; }
         .icon-box { 
             width: 60px; height: 60px; background: rgba(255, 102, 0, 0.1); 
             border-radius: 12px; display: flex; align-items: center; 
@@ -31,6 +31,7 @@
             background: var(--laranja); color: white; border: none;
             padding: 10px 25px; border-radius: 6px; font-weight: bold;
             text-decoration: none; display: inline-block; margin-top: auto;
+            transition: background 0.3s;
         }
         .btn-hub:hover { background: #e65c00; color: white; }
     </style>
@@ -58,14 +59,14 @@
         </div>
 
         <div class="col-md-4">
-            <div class="tool-card" style="opacity: 0.6; border-style: dashed;">
+            <div class="tool-card">
                 <div class="card-body text-center">
                     <div class="icon-box mx-auto">
-                        <i class="bi bi-box-seam text-secondary fs-2"></i>
+                        <i class="bi bi-box-seam text-orange fs-2"></i>
                     </div>
                     <h5 class="fw-bold">Vasos de Pressão (NR-13)</h5>
-                    <p class="text-secondary small text-italic">Em breve: Cálculo de espessura de parede e PMTA.</p>
-                    <span class="badge bg-dark text-secondary">Em desenvolvimento</span>
+                    <p class="text-secondary small">Cálculo de volume, P.V e categorização de risco conforme a NR-13 (Baseado no ASME VIII).</p>
+                    <a href="/calculadora_nr13" class="btn-hub">Acessar Calculadora</a>
                 </div>
             </div>
         </div>
