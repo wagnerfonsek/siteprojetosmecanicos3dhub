@@ -1,6 +1,95 @@
-<h2>Painel Técnico - Hub</h2>
-<ul>
-    <li><a href="/calculadora_nr35">Calculadora de Linha de Vida (NR-35)</a></li>
-    </ul>
-<br>
-<a href="/">Voltar para o Site Principal</a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub - Ferramentas de Engenharia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root { --laranja: #ff6600; --dark-bg: #0b0b0b; --card-bg: #161616; }
+        body { background-color: var(--dark-bg); color: #e0e0e0; font-family: 'Segoe UI', sans-serif; }
+        
+        .header-hub { padding: 40px 0; border-bottom: 1px solid #333; margin-bottom: 40px; }
+        .text-orange { color: var(--laranja); }
+        
+        .tool-card {
+            background: var(--card-bg); border: 1px solid #333; border-radius: 12px;
+            transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column;
+        }
+        .tool-card:hover { 
+            border-color: var(--laranja); transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
+        }
+        .card-body { padding: 30px; }
+        .icon-box { 
+            width: 60px; height: 60px; background: rgba(255, 102, 0, 0.1); 
+            border-radius: 12px; display: flex; align-items: center; 
+            justify-content: center; margin-bottom: 20px;
+        }
+        .btn-hub {
+            background: var(--laranja); color: white; border: none;
+            padding: 10px 25px; border-radius: 6px; font-weight: bold;
+            text-decoration: none; display: inline-block; margin-top: auto;
+        }
+        .btn-hub:hover { background: #e65c00; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-hub text-center">
+        <h1 class="fw-bold">Central de <span class="text-orange">Ferramentas</span></h1>
+        <p class="text-secondary">Softwares de auxílio técnico para engenharia e segurança industrial.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="tool-card">
+                <div class="card-body text-center">
+                    <div class="icon-box mx-auto">
+                        <i class="bi bi-person-walking text-orange fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold">Linha de Vida (NR-35)</h5>
+                    <p class="text-secondary small">Cálculo de catenária, tração em ancoragens e Zona de Livre Queda (ZLQ) conforme NBR 16325.</p>
+                    <a href="/calculadora_nr35" class="btn-hub">Acessar Calculadora</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="tool-card" style="opacity: 0.6; border-style: dashed;">
+                <div class="card-body text-center">
+                    <div class="icon-box mx-auto">
+                        <i class="bi bi-box-seam text-secondary fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold">Vasos de Pressão (NR-13)</h5>
+                    <p class="text-secondary small text-italic">Em breve: Cálculo de espessura de parede e PMTA.</p>
+                    <span class="badge bg-dark text-secondary">Em desenvolvimento</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="tool-card" style="opacity: 0.6; border-style: dashed;">
+                <div class="card-body text-center">
+                    <div class="icon-box mx-auto">
+                        <i class="bi bi-gear-wide-connected text-secondary fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold">Segurança (NR-12)</h5>
+                    <p class="text-secondary small">Em breve: Dimensionamento de proteções e distâncias de segurança.</p>
+                    <span class="badge bg-dark text-secondary">Em desenvolvimento</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="/" class="text-secondary text-decoration-none">
+            <i class="bi bi-arrow-left"></i> Voltar para a Vitrine Principal
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

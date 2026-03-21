@@ -16,7 +16,6 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.7);
         }
 
-        /* Cabeçalho igual ao Print */
         .excel-header { 
             background: linear-gradient(90deg, #1a1a1a, #252525);
             padding: 15px 25px; border-bottom: 2px solid var(--laranja);
@@ -40,7 +39,6 @@
         }
         .form-control-excel:focus { border-color: var(--laranja); outline: none; background: #000; }
 
-        /* Estilo para as Células de Saída (Igual ao Print) */
         .cell-output { 
             background: #282828; color: var(--laranja); 
             padding: 5px 10px; border: 1px solid #444; 
@@ -79,7 +77,8 @@
             <div class="grid-label">Vão entre Ancoragens (L)</div>
             <div class="grid-input">
                 <div class="input-group">
-                    <input type="number" step="0.1" name="vao" class="form-control-excel" value="20" required>
+                    <input type="number" step="0.1" name="vao" class="form-control-excel" 
+                           value="{{ request.form.get('vao', '20') }}" required>
                     <span class="input-group-text bg-dark border-secondary text-secondary">m</span>
                 </div>
             </div>
@@ -88,7 +87,8 @@
         <div class="grid-row">
             <div class="grid-label">Número de Pessoas na Linha</div>
             <div class="grid-input">
-                <input type="number" name="pessoas" class="form-control-excel" value="2" required>
+                <input type="number" name="pessoas" class="form-control-excel" 
+                       value="{{ request.form.get('pessoas', '2') }}" required>
             </div>
         </div>
 
@@ -96,7 +96,8 @@
             <div class="grid-label">Carga de Ruptura do Cabo (Mínima)</div>
             <div class="grid-input">
                 <div class="input-group">
-                    <input type="number" name="ruptura" class="form-control-excel" value="6160" required>
+                    <input type="number" name="ruptura" class="form-control-excel" 
+                           value="{{ request.form.get('ruptura', '6160') }}" required>
                     <span class="input-group-text bg-dark border-secondary text-secondary">kgf</span>
                 </div>
             </div>
@@ -109,7 +110,9 @@
 
         <div class="grid-row">
             <div class="grid-label">Flecha Dinâmica Estimada (f3)</div>
-            <div class="grid-input"><span class="cell-output">{{ resultado.f3_dinamica }} mm</span></div>
+            <div class="grid-input">
+                <span class="cell-output">{{ resultado.f3_mm }} mm</span>
+            </div>
         </div>
 
         <div class="grid-row">

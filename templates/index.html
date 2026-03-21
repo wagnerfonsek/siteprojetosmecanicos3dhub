@@ -80,9 +80,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#">PROJETOS<span class="text-orange">MECÂNICOS</span>3DHUB</a>
+        <a class="navbar-brand fw-bold" href="/">PROJETOS<span class="text-orange">MECÂNICOS</span>3DHUB</a>
         <div class="ms-auto d-flex align-items-center">
-            <a href="/calculadora_nr35" class="btn btn-outline-warning btn-sm fw-bold me-3" style="border-radius: 4px; border-color: var(--laranja); color: var(--laranja); text-decoration: none;">
+            <a href="/ferramentas" class="btn btn-outline-warning btn-sm fw-bold me-3" style="border-radius: 4px; border-color: var(--laranja); color: var(--laranja); text-decoration: none;">
                 <i class="bi bi-calculator me-1"></i> PAINEL TÉCNICO
             </a>
             <div class="d-none d-md-block small fw-bold opacity-75">ENGENHARIA & SOFTWARE</div>
@@ -234,39 +234,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="portfolio-card">
-                <div class="portfolio-img-wrapper">
-                    <img src="{{ url_for('static', filename='DCL.png') }}" class="portfolio-img">
-                </div>
-                <div class="p-4">
-                    <h6 class="fw-bold text-orange text-uppercase">Fundamentação Analítica</h6>
-                    <p class="small text-secondary mb-0">Diagramas de corpo livre e reações de apoio fundamentando a simulação.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="portfolio-card">
-                <div class="portfolio-img-wrapper">
-                    <img src="{{ url_for('static', filename='MALHA APLICADA NO FEA.png') }}" class="portfolio-img">
-                </div>
-                <div class="p-4">
-                    <h6 class="fw-bold text-orange text-uppercase">Discretização de Malha</h6>
-                    <p class="small text-secondary mb-0">Refinamento de elementos finitos em regiões de furos e concentradores de tensão.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="portfolio-card">
-                <div class="portfolio-img-wrapper">
-                    <img src="{{ url_for('static', filename='ANALISE MODAL.png') }}" class="portfolio-img">
-                </div>
-                <div class="p-4">
-                    <h6 class="fw-bold text-orange text-uppercase">Análise Dinâmica / Modal</h6>
-                    <p class="small text-secondary mb-0">Verificação de frequências naturais para evitar ressonância estrutural.</p>
-                </div>
-            </div>
-        </div>
     </div>
 
     <section id="contato" class="my-5 py-5">
@@ -305,111 +272,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<div class="modal fade" id="modalServico1" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow-lg">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold text-orange">Engenharia de Precisão: Análise FEA</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <p class="text-secondary">A utilização do Método de Elementos Finitos (FEA) via Autodesk Inventor garante integridade técnica e economia de material.</p>
-                <ul class="list-modal p-0">
-                    <li><strong>Segurança Estrutural:</strong> Verificação de tensões de Von Mises conforme NBR 8400.</li>
-                    <li><strong>Otimização:</strong> Redução de peso mantendo o fator de segurança rigoroso.</li>
-                </ul>
-            </div>
-            <div class="modal-footer border-0">
-                <a href="https://wa.me/5521979932621" class="btn btn-orange w-100">SOLICITAR ANÁLISE TÉCNICA</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalServico2" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow-lg">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold text-orange">Adequação NR-12: Segurança de Máquinas</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <p class="text-secondary">Evite interdições e garanta a proteção jurídica da sua empresa com laudos técnicos precisos.</p>
-                <ul class="list-modal p-0">
-                    <li><strong>Apreciação de Riscos:</strong> Identificação de perigos conforme a NBR ISO 12100.</li>
-                    <li><strong>Conformidade Legal:</strong> Emissão de documentação e ART para fiscalização.</li>
-                </ul>
-            </div>
-            <div class="modal-footer border-0">
-                <a href="https://wa.me/5521979932621" class="btn btn-orange w-100">SOLICITAR CONSULTORIA NR-12</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalServico3" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow-lg">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold text-orange">Inspeção NR-13 & Projetos NR-35</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <p class="text-secondary">Trabalhamos na preservação do patrimônio e da vida em ambientes críticos e altura.</p>
-                <ul class="list-modal p-0">
-                    <li><strong>Integridade:</strong> Inspeção em vasos de pressão seguindo o código ASME VIII.</li>
-                    <li><strong>Linha de Vida:</strong> Projetos calculados para suportar esforços dinâmicos de queda.</li>
-                </ul>
-            </div>
-            <div class="modal-footer border-0">
-                <a href="https://wa.me/5521979932621" class="btn btn-orange w-100">SOLICITAR INSPEÇÃO</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalServico4" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow-lg">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold text-orange">Treinamento em Soldagem Industrial</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <p class="text-secondary">Capacitação técnica baseada em 15 anos de vivência real em caldeiraria e manutenção industrial.</p>
-                <ul class="list-modal p-0">
-                    <li><strong>Prática & Teoria:</strong> Processos MIG/MAG, TIG e Eletrodo Revestido.</li>
-                    <li><strong>Qualidade:</strong> Foco em redução de retrabalho e inspeção visual de soldagem.</li>
-                </ul>
-            </div>
-            <div class="modal-footer border-0">
-                <a href="https://wa.me/5521979932621" class="btn btn-orange w-100">CAPACITAR MINHA EQUIPE</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalServico5" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow-lg">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold text-orange">Responsabilidade Técnica e ART</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <p class="text-secondary">Garantia jurídica e técnica para fabricação e reformas de equipamentos industriais.</p>
-                <ul class="list-modal p-0">
-                    <li><strong>CREA-RJ:</strong> Emissão de Anotação de Responsabilidade Técnica (ART).</li>
-                    <li><strong>Chão de Fábrica:</strong> Detalhamento executivo pronto para a produção.</li>
-                </ul>
-            </div>
-            <div class="modal-footer border-0">
-                <a href="https://wa.me/5521979932621" class="btn btn-orange w-100">FALAR COM O ENGENHEIRO</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>
