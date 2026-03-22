@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hub - Ferramentas de Engenharia</title>
+    <title>3D HUB - Central de Ferramentas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
@@ -52,8 +52,8 @@
                         <i class="bi bi-person-walking text-orange fs-2"></i>
                     </div>
                     <h5 class="fw-bold">Linha de Vida (NR-35)</h5>
-                    <p class="text-secondary small">Cálculo de catenária, tração em ancoragens e Zona de Livre Queda (ZLQ) conforme NBR 16325.</p>
-                    <a href="/calculadora_nr35" class="btn-hub">Acessar Calculadora</a>
+                    <p class="text-secondary small">Cálculo de catenária, tração em ancoragens e ZLQ conforme NBR 16325.</p>
+                    <a href="{{ url_for('calculadora_nr35') }}" class="btn-hub">Acessar Calculadora</a>
                 </div>
             </div>
         </div>
@@ -65,21 +65,21 @@
                         <i class="bi bi-box-seam text-orange fs-2"></i>
                     </div>
                     <h5 class="fw-bold">Vasos de Pressão (NR-13)</h5>
-                    <p class="text-secondary small">Cálculo de volume, P.V e categorização de risco conforme a NR-13 (Baseado no ASME VIII).</p>
-                    <a href="/calculadora_nr13" class="btn-hub">Acessar Calculadora</a>
+                    <p class="text-secondary small">Cálculo de volume, P.V e categorização conforme Portaria MTP 4.218.</p>
+                    <a href="{{ url_for('calculadora_nr13') }}" class="btn-hub">Acessar Calculadora</a>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="tool-card" style="opacity: 0.6; border-style: dashed;">
+            <div class="tool-card">
                 <div class="card-body text-center">
                     <div class="icon-box mx-auto">
-                        <i class="bi bi-gear-wide-connected text-secondary fs-2"></i>
+                        <i class="bi bi-gear-wide-connected text-orange fs-2"></i>
                     </div>
-                    <h5 class="fw-bold">Segurança (NR-12)</h5>
-                    <p class="text-secondary small">Em breve: Dimensionamento de proteções e distâncias de segurança.</p>
-                    <span class="badge bg-dark text-secondary">Em desenvolvimento</span>
+                    <h5 class="fw-bold">Checklist NR-12</h5>
+                    <p class="text-secondary small">Diagnóstico preliminar e estimativa de risco HRN conforme NBR ISO 12100.</p>
+                    <a href="{{ url_for('calculadora_nr12') }}" class="btn-hub">Acessar Diagnóstico</a>
                 </div>
             </div>
         </div>

@@ -66,6 +66,11 @@ def calculadora_nr13():
 def contato():
     nome = request.form.get('nome')
     return f"Olá {nome}, recebemos sua solicitação!"
+@app.route('/calculadora_nr12', methods=['GET', 'POST'])
+def calculadora_nr12():
+    # Como o checklist que te passei é processado via JavaScript no navegador,
+    # a rota só precisa renderizar o template.
+    return render_template('calculadora_nr12.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
