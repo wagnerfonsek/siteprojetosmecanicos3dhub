@@ -74,6 +74,9 @@ def calculadora_nr12():
 @app.route('/calculadora_peso')
 def calculadora_peso():
     return render_template('calculadora_peso.html')
+@app.route('/calculadora_torque')
+def calculadora_torque():
+    return render_template('calculadora_torque.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
