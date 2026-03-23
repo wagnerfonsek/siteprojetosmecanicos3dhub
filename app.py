@@ -71,6 +71,9 @@ def calculadora_nr12():
     # Como o checklist que te passei é processado via JavaScript no navegador,
     # a rota só precisa renderizar o template.
     return render_template('calculadora_nr12.html')
+@app.route('/calculadora_peso')
+def calculadora_peso():
+    return render_template('calculadora_peso.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

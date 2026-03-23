@@ -1219,58 +1219,93 @@
                 
                 <tr class="secao-subtitulo"><td colspan="6">PROCEDIMENTOS COMPLEMENTARES</td></tr>
                 <tr><td class="col-item">a</td><td>Descrição dos procedimentos para emergência.</td><td class="col-check"><input type="radio" name="p11_comp_a" value="C"></td><td class="col-check"><input type="radio" name="p11_comp_a" value="NC"></td><td class="col-check"><input type="radio" name="p11_comp_a" value="NA" checked></td><td><input type="text" class="obs-input"></td></tr>
-                <tr><td class="col-item">b</td><td>Certificações dos EPCs e EPIs.</td><td class="col-check"><input type="radio" name="p11_comp_b" value="C"></td><td class="col-check"><input type="radio" name="p11_comp_b" value="NC"></td><td class="col-check"><input type="radio" name="p11_comp_b" value="NA" checked></td><td><input type="text" class="obs-input"></td></tr>
-            </tbody>
-        </table>
+               <tr>
+                <td class="col-item">b</td>
+                <td>Certificações dos EPCs e EPIs.</td>
+                <td class="col-check"><input type="radio" name="p11_comp_b" value="C"></td>
+                <td class="col-check"><input type="radio" name="p11_comp_b" value="NC"></td>
+                <td class="col-check"><input type="radio" name="p11_comp_b" value="NA" checked></td>
+                <td><input type="text" class="obs-input"></td>
+           </tr>
+        </tbody>
+    </table>
 
-        <div class="alert alert-dark mt-4" style="border-left: 5px solid #ff6600; background-color: #1e1e1e; color: #fff;">
-            <h5>NOTAS:</h5>
-            <p class="small mb-1">1. <strong>C</strong> = Conformidade atendida | <strong>NC</strong> = Não atendida | <strong>NA</strong> = Não se aplica.</p>
-            <p class="small mb-0">2. Itens com <strong>fundo cinza/destaque</strong> caracterizam <strong>GRAVE E IMINENTE RISCO</strong>. A falta de correção imediata pode acarretar interdição ou embargo (NR-03).</p>
-        </div>
-
-        <div class="text-end mt-3 small text-secondary">Página 11 de 11</div>
-    </form>
-</div>
-    </form>
-</div>
-    </form>
-</div>
-    </form>
-</div>
-    </form>
-</div>
-    </form>
-</div>
-    </form>
-</div>
-    </form>
-</div>
-    </form>
-</div>
-    </form>
-</div>
-
-<style>
-    /* Estilo adicional para os campos de observação dentro da tabela */
-    .obs-input {
-        width: 100%;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid #333;
-        color: #ccc;
-        font-size: 11px;
-        padding: 4px;
-    }
-    .obs-input:focus { border-color: var(--laranja); outline: none; }
-</style>
-    </form>
+    <div class="alert alert-dark mt-4" style="border-left: 5px solid #ff6600; background-color: #1e1e1e; color: #fff;">
+        <h5>NOTAS:</h5>
+        <p class="small mb-1">1. <strong>C</strong> = Conformidade atendida | <strong>NC</strong> = Não atendida | <strong>NA</strong> = Não se aplica.</p>
+        <p class="small mb-0">2. Itens com <strong>fundo cinza/destaque</strong> caracterizam <strong>GRAVE E IMINENTE RISCO</strong>.</p>
+    </div>
+</div> <div id="loading-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; color: white; text-align: center; padding-top: 20%;">
+    <div class="spinner-border" style="width: 3rem; height: 3rem; color: #ff6600;" role="status"></div>
+    <h3 style="margin-top: 20px;">Processando Laudo 3D HUB...</h3>
+    <p>Aguarde, estamos convertendo as 11 páginas para PDF.</p>
 </div>
 
 <div class="nav-footer">
-    <button class="btn btn-outline-secondary btn-sm" disabled>Página Anterior</button>
-    <span class="fw-bold" style="color: var(--laranja)">PÁGINA 01 / 17</span>
-    <button class="btn btn-prox btn-sm">Próxima Página</button>
+    <button type="button" id="btn-gerar" class="btn btn-prox" onclick="gerarLaudoPDF()">GERAR LAUDO PDF (3D HUB)</button>
 </div>
 
+<style>
+   @media print {
+    /* 1. Esconde o que não é o laudo */
+    .nav-footer, #loading-overlay, #btn-gerar, .btn-prox, .no-print { 
+        display: none !important; 
+    }
+
+    /* 2. Define o papel e margens reais */
+    @page {
+        size: A4;
+        margin: 10mm;
+    }
+
+    html, body {
+        background-color: white !important;
+        color: black !important;
+        width: 210mm; /* Largura total do A4 */
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 3. Centraliza e trava a largura do Laudo */
+    .container-laudo {
+        display: block !important;
+        width: 190mm !important; /* Trava para não fugir para a direita */
+        margin: 0 auto 15mm auto !important; /* Centraliza horizontalmente */
+        padding: 5mm !important;
+        border: 1px solid #ccc !important;
+        background: white !important;
+        page-break-after: always !important; /* Força nova página para cada container */
+        page-break-inside: avoid !important; /* Tenta não cortar tabelas ao meio */
+    }
+
+    /* 4. Ajuste das tabelas da NR-12 */
+    .tabela-editavel, table {
+        width: 100% !important;
+        table-layout: fixed !important; /* Obriga a tabela a caber nos 190mm */
+        word-wrap: break-word !important;
+    }
+
+    .tabela-editavel td, .tabela-editavel th {
+        font-size: 10pt !important; /* Diminui um pouco a letra para caber tudo */
+        padding: 4px !important;
+    }
+
+    /* 5. Cores */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+function gerarLaudoPDF() {
+    // 1. Apenas abre a caixa de impressão do Windows
+    // O próprio Chrome vai gerar o PDF para você
+    window.print();
+}
+</script>
 </body>
 </html>

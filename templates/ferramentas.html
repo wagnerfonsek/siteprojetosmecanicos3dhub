@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container pb-5">
     <div class="header-hub text-center">
         <h1 class="fw-bold">Central de <span class="text-orange">Ferramentas</span></h1>
         <p class="text-secondary">Softwares de auxílio técnico para engenharia e segurança industrial.</p>
@@ -83,9 +83,21 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="text-center mt-5">
+        <div class="col-md-4">
+            <div class="tool-card">
+                <div class="card-body text-center">
+                    <div class="icon-box mx-auto">
+                        <i class="bi bi-layers text-orange fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold">Cálculo de Peso</h5>
+                    <p class="text-secondary small">Estimativa de peso teórico para chapas de aço, inox e alumínio em projetos.</p>
+                    <a href="{{ url_for('calculadora_peso') }}" class="btn-hub">Acessar Cálculo</a>
+                </div>
+            </div>
+        </div>
+
+    </div> <div class="text-center mt-5">
         <a href="/" class="text-secondary text-decoration-none">
             <i class="bi bi-arrow-left"></i> Voltar para a Vitrine Principal
         </a>
